@@ -1,4 +1,7 @@
-import { Pool, PoolClient } from 'pg';
+import {
+  Pool,
+  PoolClient
+} from 'pg';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -9,7 +12,7 @@ const pool = new Pool({
   }
 });
 
-async function performDatabaseOperation(callback: (client: PoolClient) => Promise<any>): Promise<any> {
+async function performDatabaseOperation(callback: (client: PoolClient) => Promise < any > ): Promise < any > {
   const client = await pool.connect(); // Obtener un PoolClient de la piscina
 
   try {
@@ -20,6 +23,6 @@ async function performDatabaseOperation(callback: (client: PoolClient) => Promis
   }
 }
 
-export { performDatabaseOperation };
-
-
+export {
+  performDatabaseOperation
+};
