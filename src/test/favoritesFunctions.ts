@@ -78,5 +78,5 @@ describe('Favorite Functions', () => {
         });
     });
 
-    // Escribe pruebas similares para deleteFavorite y getUserFavorites
+    // Write similar tests for deleteFavorite and getUserFavorites
 });

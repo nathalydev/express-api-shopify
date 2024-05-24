@@ -22,16 +22,16 @@ router.post('/favorite/add', async (req: Request, res: Response) => {
     } = req.body;
 
     if (!userID || !product) {
-      throw new Error('Se requieren los parámetros user_id y product en la solicitud');
+      throw new Error('user_id and product are required in this request');
     }
 
     const new_product: typeof ProductSchema = product;
     const response = await addFavorite(Number(userID), new_product, res);
     return response;
   } catch (error: any) {
-    console.error('Error en la solicitud para agregar favorito:', error);
+    console.error('Error in the request to add favorite:', error);
     return res.status(error instanceof SyntaxError || error instanceof URIError ? 400 : 500).json({
-      error: error.message || 'Error interno del servidor'
+      error: error.message || 'Internal server error'
     });
   }
 });
@@ -44,15 +44,15 @@ router.delete('/favorite/delete', async (req: Request, res: Response) => {
     } = req.query
 
     if (!userID || !productID) {
-      throw new Error('Se requieren los parámetros userID y productID en la solicitud');
+      throw new Error('The userID and productID parameters are required in the request');
     }
 
     const response = await deleteFavorite(Number(userID), Number(productID), res);
     return response;
   } catch (error: any) {
-    console.error('Error en la solicitud para agregar favorito:', error);
+    console.error('Error in the request to add favorite:', error);
     return res.status(error instanceof SyntaxError || error instanceof URIError ? 400 : 500).json({
-      error: error.message || 'Error interno del servidor'
+      error: error.message || 'Internal server error'
     });
   }
 });
@@ -64,15 +64,15 @@ router.get('/favorites/user/:user_id', async (req: Request, res: Response) => {
     } = req.params
 
     if (!user_id) {
-      throw new Error('Se requiere el parámetro user_id en la solicitud');
+      throw new Error('The user_id parameter is required in the request');
     }
 
     const response = await getUserFavorites(Number(user_id), res);
     return response;
   } catch (error: any) {
-    console.error('Error en la solicitud para agregar favorito:', error);
+    console.error('Error in the request to add favorite:', error);
     return res.status(error instanceof SyntaxError || error instanceof URIError ? 400 : 500).json({
-      error: error.message || 'Error interno del servidor'
+      error: error.message || 'Internal server error'
     });
   }
 });

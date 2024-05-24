@@ -20,7 +20,7 @@ app.use(Favorites);
 const swaggerDefinition = {
   openapi: '3.0.0',
   info: {
-    title: 'Favoritos API for Shopify Hydrogen Platform',
+    title: 'Favorites API for Shopify Hydrogen Platform',
     version: '1.0.0',
     description: 'This is a REST API application built with Express for managing favorite products within the Shopify Hydrogen platform. The backend service allows users to save and retrieve their favorite products.',
   },
@@ -58,7 +58,7 @@ async function testDatabaseConnection(): Promise < void > {
       if (result.rows.length > 0) {
         console.log('table exist in DB');
       } else {
-        console.log('table doesnt exist in DB');
+        console.log('table does not exist in DB');
       }
     });
   } catch (err) {
@@ -73,7 +73,7 @@ app.get('/test', async (req, res) => {
       message: 'Test connection to DB access'
     });
   } catch (err) {
-    console.error('Error in the test for conexion to DB', err);
+    console.error('Error in the test for connection to DB', err);
     res.status(500).json({
       error: 'Error in the test for connection to DB'
     });

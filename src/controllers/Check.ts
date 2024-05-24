@@ -44,7 +44,7 @@ async function checkFavoritesTable(): Promise < void > {
     `);
 
     if (!result.rows[0].exists) {
-      // Si la tabla de favoritos no existe, crearla
+      // If fav table doesn't exist, create it
       await client.query(`
         CREATE TABLE favorites (
           id SERIAL PRIMARY KEY,
@@ -52,10 +52,10 @@ async function checkFavoritesTable(): Promise < void > {
           product_data JSONB
         );
       `);
-      console.log('Tabla de favoritos creada con éxito.');
+      console.log('Fav table created successfully.');
     }
   }).catch((error) => {
-    console.error('Error al verificar/crear la tabla de favoritos:', error);
+    console.error('Verify/creation error on fav table', error);
   });
 }
 

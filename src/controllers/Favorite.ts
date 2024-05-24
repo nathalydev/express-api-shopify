@@ -35,7 +35,7 @@ import ProductSchema from '../models/Schemas/ProductSchema';
 *                  $ref: '#/components/schemas/ProductSchema'
 *      responses:
 *        '200':
-*          description: Favorito agregado exitosamente
+*          description: Fav added successfully 
 *          content:
 *            application/json:
 *              schema:
@@ -45,7 +45,7 @@ import ProductSchema from '../models/Schemas/ProductSchema';
 *                    type: string
 *                    description: A success message
 *        '500':
-*          description: Error interno del servidor
+*          description: Internal server error
 *          content:
 *            application/json:
 *              schema:
@@ -90,12 +90,12 @@ async function addFavorite(user_id: number, product_data: typeof ProductSchema, 
     await client.query('INSERT INTO favorites (user_id, product_data) VALUES ($1, $2)', [user_id, favorite.product_data]);
 
     return res.status(200).json({
-      message: 'Favorito agregado exitosamente'
+      message: 'Favorite added successfully'
     });
   }).catch((err) => {
-    console.error('Error al agregar el favorito:', err);
+    console.error('Error when adding favorite:', err);
     return res.status(500).json({
-      error: 'Error interno del servidor'
+      error: 'Internal error in server'
     });
   });
 }
