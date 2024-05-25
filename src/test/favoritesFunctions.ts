@@ -12,7 +12,7 @@ import {
     addFavorite,
     deleteFavorite,
     getUserFavorites
-} from '../controllers/Favorite'; // Asegúrate de usar la ruta correcta
+} from '../controllers/Favorite'; // Make sure to use correct route
 import {
     performDatabaseOperation
 } from '../config/db';
@@ -60,7 +60,7 @@ describe('Favorite Functions', () => {
 
             expect(response.status).toHaveBeenCalledWith(200);
             expect(response.json).toHaveBeenCalledWith({
-                message: 'Favorito agregado exitosamente'
+                message: 'Favorite added successfully'
             });
         });
 
@@ -73,7 +73,7 @@ describe('Favorite Functions', () => {
 
             expect(response.status).toHaveBeenCalledWith(500);
             expect(response.json).toHaveBeenCalledWith({
-                error: 'Error interno del servidor'
+                error: 'Internal server error'
             });
         });
     });

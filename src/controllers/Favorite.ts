@@ -158,18 +158,18 @@ async function deleteFavorite(user_id: number, product_id: number, res: Response
     const favoriteResult = await client.query('SELECT * FROM favorites WHERE user_id = $1 AND product_id = $2', [user_id, product_id]);
     if (favoriteResult.rows.length === 0) {
       return res.status(404).json({
-        error: 'Favorito no encontrado para el usuario especificado'
+        error: 'Favorite not found for the specified user'
       });
     }
 
     await client.query('DELETE FROM favorites WHERE user_id = $1 AND product_id = $2', [user_id, product_id]);
     return res.status(200).json({
-      message: 'Favorito eliminado exitosamente'
+      message: 'Favorite successfully deleted'
     });
   }).catch((err) => {
-    console.error('Error al eliminar el favorito:', err);
+    console.error('Error deleting favorite:', err);
     return res.status(500).json({
-      error: 'Error interno del servidor'
+      error: 'Internal server error'
     });
   });
 }
@@ -227,9 +227,9 @@ async function getUserFavorites(user_id: number, res: Response): Promise < Respo
 
     return res.status(200).json(favorites);
   }).catch((err) => {
-    console.error('Error al obtener los favoritos del usuario:', err);
+    console.error('Error retrieving users favorites:', err);
     return res.status(500).json({
-      error: 'Error interno del servidor'
+      error: 'Internal server error'
     });
   });
 }
